@@ -1,0 +1,22 @@
+Exercise 1 
+
+The code schedueles a command every hour by using laravel scheduele system.
+This makes it to not overlap if there is any other instance already active.
+onOneServer makes it to run only on one server to not process same thing many times
+runInBackground as the name says, runs in background :)
+
+Exercise 2 
+
+Coontext is used to the curent state of the thing, like auth()->user, app()->getLocale, 
+or even setting custom ones
+The main difference is that context is used for one request only and cache for many requests on
+a specific lifetime or forever. Other difference is that the context is in memory and cache
+can be set via Redis, File, DB, etc. Laravel already suports cache but not context.
+Both are temporary.
+
+Exercise 3
+$query->update() does not trigger events and does not update created_at/updated_at
+$model->update() does all of above
+$model->updateQuietly() is somehow a prototype, is a $model->update()  that does not
+trigger the events but updated the created_at/updated_at columns
+$model->update() and $model->updateQuietly() also interact with the appends in models
